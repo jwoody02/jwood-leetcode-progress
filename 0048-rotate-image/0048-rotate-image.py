@@ -8,9 +8,9 @@ class Solution:
         for i in range(matrix_len):
             for j in range(i, matrix_len):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-        
-        for i in range(matrix_len):
             matrix[i] = matrix[i][::-1]
+        # for i in range(matrix_len):
+            
         
 
         
