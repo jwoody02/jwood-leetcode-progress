@@ -16,6 +16,7 @@ class Solution:
                     # make sure we can get to this word
                     if dp[j]:
                         dp[i] = True
+                        break
                     
         return dp[-1]
 
