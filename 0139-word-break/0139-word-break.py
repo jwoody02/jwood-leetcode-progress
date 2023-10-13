@@ -12,7 +12,6 @@ class Solution:
         def dfs(index):
             # make it so we can edit ret_val
             nonlocal ret_val
-            nonlocal index_cache
 
             # check if we've already handled index
             if index in index_cache:
