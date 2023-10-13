@@ -10,6 +10,7 @@ class Solution:
             # reached the end of s, append new string
             if index == len(s):
                 valid_strings.append(" ".join(words_array))
+                return
 
             # call dfs using current words array
             for i in range(index, len(s) + 1):
