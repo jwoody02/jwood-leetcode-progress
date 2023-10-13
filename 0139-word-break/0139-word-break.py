@@ -13,7 +13,7 @@ class Solution:
             # make it so we can edit ret_val
             nonlocal ret_val
             nonlocal index_cache
-            
+
             # check if we've already handled index
             if index in index_cache:
                 return
@@ -21,7 +21,6 @@ class Solution:
             # reached the end
             if index == len(s):
                 ret_val = True
-                index_cache = {x:0 for x in range(len(s) + 1)}
                 return
             
             # call dfs on valid words
