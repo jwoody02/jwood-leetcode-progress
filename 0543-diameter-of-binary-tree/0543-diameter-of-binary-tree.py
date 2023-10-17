@@ -9,6 +9,8 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         # variable to store diameter
         diameter = 0
+        # caching
+        node_cache = {} # { node: depth }
 
         # dfs to get longest length
         def dfs(node) -> int:
@@ -18,9 +20,19 @@ class Solution:
             if not node:
                 return 0
 
-            # get left and right depths
-            left_depth = dfs(node.left)
-            right_depth = dfs(node.right)
+            # get left depth using node_cache if possible
+            left_depth = 0
+            if node.left in node_cache:
+                left_depth = node_cache[node.left]
+            else:
+                left_depth = dfs(node.left)
+            
+            # get right depth using node_cache if possible
+            right_depth = 0
+            if node.right in node_cache:
+                right_depth = node_cache[node.right]
+            else:
+                right_depth = dfs(node.right)
 
             # update diameter
             diameter = max(diameter, left_depth + right_depth)
