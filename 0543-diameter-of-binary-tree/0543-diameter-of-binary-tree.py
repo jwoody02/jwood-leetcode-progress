@@ -26,6 +26,7 @@ class Solution:
                 left_depth = node_cache[node.left]
             else:
                 left_depth = dfs(node.left)
+                node_cache[node.left] = left_depth
             
             # get right depth using node_cache if possible
             right_depth = 0
@@ -33,6 +34,7 @@ class Solution:
                 right_depth = node_cache[node.right]
             else:
                 right_depth = dfs(node.right)
+                node_cache[node.right] = right_depth
 
             # update diameter
             diameter = max(diameter, left_depth + right_depth)
