@@ -1,5 +1,9 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        if not strs:
+            return ""
+
         # return val
         longest_prefix = ""
         # shortest length of a string in the list
