@@ -7,16 +7,17 @@ class Solution:
         # keep track of the maximum profit as we iterate
         max_profit = 0
 
-        # min price found
-        min_price = max(prices)
+        # array to keep track of the minimum value from prices[0:i]
+        min_prices = [prices[0]]
 
         # iterate
-        for price in prices:
+        for price in prices[1:]:
             # update max profit
-            max_profit = max(max_profit, price - min_price)
+            latest_min_price = min_prices[-1]
+            max_profit = max(max_profit, price - latest_min_price)
 
             # get current minimum price and append
-            min_price = min(price, min_price)
+            min_prices.append(min(price, min_prices[-1]))
             
 
         return max_profit
