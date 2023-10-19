@@ -3,11 +3,16 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        matrix_len = len(matrix)
+        
+        # length of matrix
+        n = len(matrix)
 
-        for i in range(matrix_len):
-            for j in range(i, matrix_len):
+        # iterate thru each pixel
+        for i in range(n):
+            for j in range(i, n):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        
+            # reverse matrix
             matrix[i] = matrix[i][::-1]
             
         
