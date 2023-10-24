@@ -19,7 +19,8 @@ class Solution:
                 if threesum == 0:
                     zero_sum_triplets.append([num_i, nums[l], nums[r]])
                     l += 1
-                    while l < r and nums[l] == nums[l-1] and 1 < r:
+                    # find next number that's different
+                    while nums[l] == nums[l-1] and l < r:
                         l += 1
                 elif threesum < 0:
                     l += 1
