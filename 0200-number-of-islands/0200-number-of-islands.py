@@ -10,11 +10,8 @@ class Solution:
         def isValid(m: int, n: int):
             return m < len(grid) and m >= 0 and n < len(grid[m]) and n >= 0
 
-        # dfs that takes array of coordinates as input
+        # dfs that takes a coordinate as input
         def dfs(coordinate):
-            if not coordinate:
-                return
-            
             (x,y) = coordinate
             if isValid(x,y):
                 setToWater(x,y)
