@@ -33,8 +33,10 @@ class Solution:
                 expected_character = queue.pop()
                 if c != expected_character:
                     ret_value = False
+                    break
             else:
                 ret_value = False
+                break
         if len(queue) != 0: ret_value = False
 
         return ret_value
