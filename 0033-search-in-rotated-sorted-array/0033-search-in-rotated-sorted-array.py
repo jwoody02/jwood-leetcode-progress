@@ -2,7 +2,7 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         # return index
         index = -1
-
+        
         # helper func to check if target could be in subarray
         def couldTargetBeInArray(array, targ):
             return len(array) > 0 and min(array) <= targ and max(array) >= targ
