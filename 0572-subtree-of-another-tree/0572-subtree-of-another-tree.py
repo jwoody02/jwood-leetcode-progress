@@ -24,7 +24,7 @@ class Solution:
         # value to search for nodes with same value
         target_value = subRoot.val
 
-        def bfs(root_node: Optional[TreeNode], target: int):
+        def dfs(root_node: Optional[TreeNode], target: int):
             nonlocal subTree
 
             # exit if subtree already found OR root node is None
@@ -37,10 +37,10 @@ class Solution:
                 return
             
             # call bfs on left and right nodes
-            bfs(root_node.left, target)
-            bfs(root_node.right, target)
+            dfs(root_node.left, target)
+            dfs(root_node.right, target)
 
 
-        bfs(root, target_value)
+        dfs(root, target_value)
 
         return subTree
