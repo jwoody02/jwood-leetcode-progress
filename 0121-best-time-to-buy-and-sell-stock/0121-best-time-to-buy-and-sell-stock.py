@@ -8,16 +8,15 @@ class Solution:
         max_profit = 0
 
         # array to keep track of the minimum value from prices[0:i]
-        min_prices = [prices[0]]
+        min_price = float('inf')
 
         # iterate
-        for price in prices[1:]:
+        for price in prices:
             # update max profit
-            latest_min_price = min_prices[-1]
-            max_profit = max(max_profit, price - latest_min_price)
+            max_profit = max(max_profit, price - min_price)
 
-            # get current minimum price and append
-            min_prices.append(min(price, min_prices[-1]))
+            # get current minimum price
+            min_price = min(price, min_price)
             
 
         return max_profit
