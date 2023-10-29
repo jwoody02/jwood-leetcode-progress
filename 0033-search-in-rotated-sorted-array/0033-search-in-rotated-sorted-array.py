@@ -10,17 +10,19 @@ class Solution:
         # modified binary search, relativeIndex is the start index of current subarray
         def rotatedBinarySearch(subArray: List[int], goal: int, relativeIndex: int):
             nonlocal index
+            # found target
             if len(subArray) == 1 and subArray[0] == goal:
-                print("found goal!")
                 index = relativeIndex
 
+            # index has been found, exit
             if index != -1:
                 return
 
+            # seperate left side and right side
             leftSide = subArray[0:(len(subArray) // 2)]
             rightSide = subArray[(len(subArray) // 2):len(subArray)]
-            print("left side:", leftSide)
-            print("right side:", rightSide)
+
+            # recursively call rotatedBinarySearch if the target may be in left/right side
             if couldTargetBeInArray(leftSide, goal):
                 rotatedBinarySearch(leftSide, goal, relativeIndex)
             if couldTargetBeInArray(rightSide, goal):
