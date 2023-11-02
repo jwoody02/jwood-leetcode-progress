@@ -1,11 +1,13 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-       # The result variable will hold the final count of paths
-        result = 1
+        if m > n:  # Choose the smaller dimension for the DP array
+            m, n = n, m
 
-        # Calculate the result using a direct method to avoid overflow
-        for i in range(1, min(m, n)):
-            result = result * (m + n - 1 - i) // i
+        dp = [1] * m
 
-        return result
+        for _ in range(1, n):
+            for j in range(1, m):
+                dp[j] += dp[j - 1]
+
+        return dp[-1]
 
