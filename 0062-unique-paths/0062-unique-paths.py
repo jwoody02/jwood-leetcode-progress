@@ -1,14 +1,11 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        dp = [[0] * n for _ in range(m)]
-        dp[0][0] = 1
+       # The result variable will hold the final count of paths
+        result = 1
 
-        for i in range(m):
-            for j in range(n):
-                if i > 0:
-                    dp[i][j] += dp[i - 1][j]
-                if j > 0:
-                    dp[i][j] += dp[i][j - 1]
+        # Calculate the result using a direct method to avoid overflow
+        for i in range(1, min(m, n)):
+            result = result * (m + n - 1 - i) // i
 
-        return dp[m - 1][n - 1]
+        return result
 
