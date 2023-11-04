@@ -6,24 +6,27 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        # return value
         balanced = True
 
-        # dfs to find heights of all subtrees starting at node
-        def dfs(node) -> int:
-            # found leaf, return 0
+        def dfs(node: Optional[TreeNode], depth: int) -> int:
             nonlocal balanced
-            if not node: return 0
 
-            # get heights for left and right subtrees
-            right_height, left_height = dfs(node.right), dfs(node.left)
+            # If the node is None, return the depth - 1
+            if not node:
+                return depth - 1
 
-            # if difference between the heights > 1, then it's not balanced
-            if abs(right_height - left_height) > 1: balanced = False
+            # Get the depths of the two subtrees
+            leftDepth = dfs(node.left, depth + 1)
+            rightDepth = dfs(node.right, depth + 1)
 
-            # return right height + left + 1 to account for this node
-            return max(right_height, left_height) + 1
+            # If the difference in depths is greater than 1, set balanced to False
+            if abs(leftDepth - rightDepth) > 1:
+                balanced = False
+            
+            # Return the maximum depth
+            return max(leftDepth, rightDepth)
 
-        # start dfs
-        dfs(root)
+        # Start DFS on the root node
+        dfs(root, 0)
         return balanced
+
