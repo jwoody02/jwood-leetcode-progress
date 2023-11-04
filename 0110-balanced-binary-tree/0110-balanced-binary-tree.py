@@ -12,7 +12,7 @@ class Solution:
             nonlocal balanced
 
             # If the node is None, return the depth - 1
-            if not node:
+            if not node or not balanced:
                 return depth - 1
 
             # Get the depths of the two subtrees
