@@ -21,6 +21,8 @@ class Solution:
 
         # now sort elements O(nlogn)
         elements.sort()
+
+        # return kth smallest
         return elements[::-1][-k]
        
         
